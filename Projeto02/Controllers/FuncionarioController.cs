@@ -56,30 +56,25 @@ namespace Projeto02.Controllers
                 Console.Write("\n Informe 1 (CSV) ou 2 (TXT) ");
                 var opcao = int.Parse(Console.ReadLine());
 
-                // criando um objeto da classe abstrata, mas sem instancia-lo
                 FuncionarioRepository funcionarioRepository = null;
 
                 switch (opcao)
                 {
-                    case 1: // CSV
-                        // Polimorfismo
+                    case 1:
                         funcionarioRepository = new FuncionarioRepositoryCSV();
                         break;
 
-                    case 2: // TXT
-                        // Polimorfismo
+                    case 2:
                         funcionarioRepository = new FuncionarioRepositoryTXT();
                         break;
 
-                    default: // nenhum dos anteriores
+                    default:
                         Console.WriteLine("\n Formato inválido!");
                         break;
                 }
 
-                // verificando se o objeto (funcionarioRepository) não é null
                 if (funcionarioRepository != null)
                 {
-                    // gravando os dados do funcionário em arquivo
                     funcionarioRepository.ExportarDados(funcionario);
 
                     Console.WriteLine("\n Dados gravados com sucesso!");
